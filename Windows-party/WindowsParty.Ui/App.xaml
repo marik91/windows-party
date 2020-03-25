@@ -1,0 +1,14 @@
+﻿<Application x:Class="WindowsParty.Ui.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:WindowsParty.Ui"
+             xmlns:viewModels="clr-namespace:WindowsParty.Ui.ViewModels">
+    <Application.Resources>
+        <ResourceDictionary>
+            <viewModels:ViewModelLocator
+                x:Key="Locator" />
+
+            <!-- Application styles definition -->
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
