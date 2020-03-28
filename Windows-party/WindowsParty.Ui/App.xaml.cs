@@ -2,29 +2,22 @@
 {
     using System;
     using System.Windows;
-    using WindowsParty.Ui.ViewModels;
-    using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+    using WindowsParty.Authentication.Tesonet;
+    using WindowsParty.Repository.Tesonet;
 
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
     public partial class App : Application
     {
-        private IHost _host;
+        private readonly IHost _host;
 
         public App()
         {
-            _host = Host.CreateDefaultBuilder() // Use default settings
-                //new HostBuilder()          // Initialize an empty HostBuilder
-               .ConfigureAppConfiguration(
-                    (context, builder) =>
-                    {
-                        // Add other configuration files...
-                        builder.AddJsonFile("appsettings.local.json", optional: true);
-                    })
-               .ConfigureServices((context, services) => { ConfigureServices(context.Configuration, services); })
+            _host = Host.CreateDefaultBuilder()
+               .ConfigureServices(ConfigureServices)
                .ConfigureLogging(
                     logging =>
                     {
@@ -37,13 +30,14 @@
 
         public static IServiceProvider ServiceProvider { get; private set; }
 
-        private void ConfigureServices(IConfiguration configuration, IServiceCollection services)
+        protected override async void OnExit(ExitEventArgs e)
         {
-            // Register all ViewModels.
-            services.AddSingleton<MainViewModel>();
+            using (_host)
+            {
+                await _host.StopAsync(TimeSpan.FromSeconds(5));
+            }
 
-            // Register all the Windows of the applications.
-            services.AddTransient<MainWindow>();
+            base.OnExit(e);
         }
 
         protected override async void OnStartup(StartupEventArgs e)
@@ -56,14 +50,11 @@
             base.OnStartup(e);
         }
 
-        protected override async void OnExit(ExitEventArgs e)
+        private void ConfigureServices(IServiceCollection services)
         {
-            using (_host)
-            {
-                await _host.StopAsync(TimeSpan.FromSeconds(5));
-            }
-
-            base.OnExit(e);
+            services.AddTesonetAuthentication();
+            services.AddTesonetRepository();
+            services.AddUiModule();
         }
     }
 }

@@ -1,7 +1,7 @@
-﻿using GalaSoft.MvvmLight;
-
-namespace WindowsParty.Ui.ViewModels
+﻿namespace WindowsParty.Ui.ViewModels
 {
+    using GalaSoft.MvvmLight;
+
     public class MainViewModel : ViewModelBase
     {
     }
