@@ -6,6 +6,9 @@
     using Microsoft.Extensions.Hosting;
     using WindowsParty.Authentication.Tesonet;
     using WindowsParty.Repository.Tesonet;
+    using WindowsParty.Ui.Services;
+    using WindowsParty.Ui.ViewModels;
+    using WindowsParty.Ui.Views;
 
     /// <summary>
     /// Interaction logic for App.xaml
@@ -44,8 +47,8 @@
         {
             await _host.StartAsync();
 
-            var window = ServiceProvider.GetRequiredService<MainWindow>();
-            window.Show();
+            var navigationService = ServiceProvider.GetRequiredService<IWindowNavigationService>();
+            await navigationService.ShowAsync<LogInView>();
 
             base.OnStartup(e);
         }

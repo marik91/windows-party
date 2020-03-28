@@ -1,19 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-
-namespace WindowsParty.Ui.Views
+﻿namespace WindowsParty.Ui.Views
 {
+    using System.Windows;
+
     /// <summary>
-    /// Interaction logic for LogInView.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class LogInView : Window
     {

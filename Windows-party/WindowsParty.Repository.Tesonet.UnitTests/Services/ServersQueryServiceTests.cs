@@ -6,13 +6,13 @@ namespace WindowsParty.Repository.Tesonet.UnitTests.Services
     using System.Net.Http.Headers;
     using System.Threading;
     using System.Threading.Tasks;
-    using WindowsParty.Domain.Models;
-    using WindowsParty.Repository.Tesonet.Services;
     using FluentAssertions;
     using Microsoft.Extensions.Configuration;
     using Moq;
     using Moq.Protected;
     using NUnit.Framework;
+    using WindowsParty.Domain.Models;
+    using WindowsParty.Repository.Tesonet.Services;
 
     public class ServersQueryServiceTests
     {
