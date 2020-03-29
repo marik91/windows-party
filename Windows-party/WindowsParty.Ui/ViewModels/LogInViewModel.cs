@@ -12,15 +12,19 @@
     {
         private readonly IAuthenticationService _authenticationService;
         private readonly IPageNavigationService _pageNavigationService;
+        private readonly IServerQueryService _serverQueryService;
         private string _password;
         private string _userName;
+        private string _errorMessage;
 
         public LogInViewModel(
             IAuthenticationService authenticationService,
-            IPageNavigationService pageNavigationService)
+            IPageNavigationService pageNavigationService,
+            IServerQueryService serverQueryService)
         {
             _authenticationService = authenticationService;
             _pageNavigationService = pageNavigationService;
+            _serverQueryService = serverQueryService;
             LogInCommand = new RelayCommand(async () => await LogIn(), CanExecuteLogin);
         }
 
@@ -33,6 +37,7 @@
             {
                 Set(ref _password, value);
                 LogInCommand.RaiseCanExecuteChanged();
+                ErrorMessage = string.Empty;
             }
         }
 
@@ -42,6 +47,17 @@
             set
             {
                 Set(ref _userName, value);
+                LogInCommand.RaiseCanExecuteChanged();
+                ErrorMessage = string.Empty;
+            }
+        }
+
+        public string ErrorMessage
+        {
+            get => _errorMessage;
+            set
+            {
+                Set(ref _errorMessage, value);
                 LogInCommand.RaiseCanExecuteChanged();
             }
         }
@@ -68,7 +84,12 @@
 
             if (result.IsSuccess)
             {
-                _pageNavigationService.NavigateTo<ServersView>(result);
+                var servers = await _serverQueryService.GetAsync(result);
+                _pageNavigationService.NavigateTo<ServersView>(servers);
+            }
+            else
+            {
+                ErrorMessage = "Wrong credentials";
             }
         }
     }

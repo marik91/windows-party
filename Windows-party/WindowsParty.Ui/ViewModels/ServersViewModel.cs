@@ -1,39 +1,47 @@
 ﻿namespace WindowsParty.Ui.ViewModels
 {
-    using System;
+    using System.Collections.Generic;
     using System.ComponentModel;
     using System.Threading.Tasks;
+    using WindowsParty.Domain.Contracts;
     using WindowsParty.Domain.Entities;
     using WindowsParty.Domain.Models;
+    using WindowsParty.Ui.Services;
+    using WindowsParty.Ui.Views;
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
 
     public class ServersViewModel : ViewModelBase, IViewModel
     {
-        private TokenResult _tokenResult;
+        private readonly IPageNavigationService _navigationService;
 
-        public ServersViewModel()
+        public ServersViewModel(IPageNavigationService navigationService)
         {
-            LogOffCommand = new RelayCommand(async () => await LogOff());
+            _navigationService = navigationService;
+            LogOffCommand = new RelayCommand(LogOff);
+
+            if (navigationService.Parameter is IList<Server> servers)
+            {
+                Servers = new BindingList<Server>(servers);
+            }
+            else
+            {
+                Servers = new BindingList<Server>();
+            }
         }
 
         public RelayCommand LogOffCommand { get; }
 
-        public BindingList<Server> Servers { get; } = new BindingList<Server>();
+        public BindingList<Server> Servers { get; }
 
         public Task ActivateAsync(object parameter)
         {
-            if (parameter is TokenResult tokenResult)
-            {
-                _tokenResult = tokenResult;
-            }
-
             return Task.CompletedTask;
         }
 
-        private async Task LogOff()
+        private void LogOff()
         {
-            throw new NotImplementedException();
+            _navigationService.NavigateTo<LogInView>();
         }
     }
 }

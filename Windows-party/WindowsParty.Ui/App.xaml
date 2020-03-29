@@ -15,8 +15,10 @@
                 d:IsDataSource="True" />
 
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Theme/scrollbar.xaml" />
                 <ResourceDictionary Source="Theme/styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

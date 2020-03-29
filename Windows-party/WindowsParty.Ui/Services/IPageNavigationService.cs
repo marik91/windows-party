@@ -4,6 +4,8 @@
 
     public interface IPageNavigationService
     {
+        object Parameter { get; }
+
         void NavigateTo<T>(object parameter = null) where T : Page;
     }
 }

@@ -6,15 +6,19 @@
     xmlns:local="clr-namespace:WindowsParty.Ui.Views"
     xmlns:uc="clr-namespace:WindowsParty.Ui.UserControls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converters="clr-namespace:WindowsParty.Ui.Converters"
     Title="Log In"
-    Width="1460"
-    Height="780"
+    d:DesignHeight="1460"
+    d:DesignWidth="780"
     DataContext="{Binding Source={StaticResource Locator}, Path=LogInViewModel}"
     FontSize="28"
     mc:Ignorable="d" >
     <Page.Background>
         <ImageBrush ImageSource="/WindowsParty.Ui;component/Assets/bg_login.png" Stretch="None"/>
     </Page.Background>
+    <Page.Resources>
+        <converters:StringToVisibilityConverter x:Key="StringToVisibilityConverter" />
+    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"></RowDefinition>
@@ -30,6 +34,7 @@
                 <uc:Username Width="372" Padding="10" EditableText="{Binding UserName}"></uc:Username>
                 <uc:Password Width="372" Padding="10" PasswordText="{Binding Password}"></uc:Password>
                 <Button Width="352" Margin="10" Padding="10" Style="{DynamicResource LogInButton}" Command="{Binding LogInCommand}" Content="Log In"></Button>
+                <Label FontSize="18" Foreground="Red" Content="{Binding ErrorMessage}" Visibility="{Binding ErrorMessage, Converter={StaticResource StringToVisibilityConverter}}"></Label>
             </StackPanel>
         </Border>
     </Grid>

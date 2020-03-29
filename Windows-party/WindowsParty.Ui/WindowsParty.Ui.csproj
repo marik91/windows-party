@@ -9,9 +9,12 @@
   <ItemGroup>
     <None Remove="Assets\bg_login.png" />
     <None Remove="Assets\bg_servers.png" />
+    <None Remove="Assets\logoff_icon.png" />
+    <None Remove="Assets\logo_dark.png" />
     <None Remove="Assets\logo_pass.png" />
     <None Remove="Assets\logo_user.png" />
     <None Remove="Assets\logo_white.png" />
+    <None Remove="Assets\logo_white_sm.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,16 +24,23 @@
     <Content Include="Assets\bg_servers.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\logo_dark.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\logo_user.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\logo_white.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\logo_white_sm.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.3" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.19" />
     <PackageReference Include="MvvmLightLibsStd10" Version="5.4.1.1" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.164">
       <PrivateAssets>all</PrivateAssets>
@@ -46,6 +56,12 @@
 
   <ItemGroup>
     <Content Include="Assets\logo_pass.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\logoff_icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

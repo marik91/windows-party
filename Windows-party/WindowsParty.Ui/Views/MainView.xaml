@@ -6,11 +6,11 @@
         xmlns:local="clr-namespace:WindowsParty.Ui.Views"
         mc:Ignorable="d"
         Title="Windows Party"
-        WindowStartupLocation="CenterScreen"
         DataContext="{Binding Source={StaticResource Locator}, Path=MainViewModel}"
         Width="1460"
-        Height="780"
-        Background="Transparent">
+        Height="800"
+        WindowStartupLocation="CenterScreen"
+        Background="#0b0f27">
 
     <Grid>
         <Frame 
