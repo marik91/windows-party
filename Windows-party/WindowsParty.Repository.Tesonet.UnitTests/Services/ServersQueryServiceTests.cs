@@ -8,6 +8,7 @@ namespace WindowsParty.Repository.Tesonet.UnitTests.Services
     using System.Threading.Tasks;
     using FluentAssertions;
     using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.Logging;
     using Moq;
     using Moq.Protected;
     using NUnit.Framework;
@@ -31,10 +32,13 @@ namespace WindowsParty.Repository.Tesonet.UnitTests.Services
             var configurationMock = new Mock<IConfiguration>();
             var configurationSectionMock = new Mock<IConfigurationSection>();
             configurationSectionMock.Setup(s => s.Value).Returns("http://localhost/servers");
-            configurationMock.Setup(s => s.GetSection("AuthenticationEndpoint"))
+            configurationMock.Setup(s => s.GetSection("ServersEndpoint"))
                .Returns(configurationSectionMock.Object);
 
-            _sut = new ServersQueryService(_httpFactoryMock.Object, configurationMock.Object);
+            _sut = new ServersQueryService(
+                _httpFactoryMock.Object, 
+                configurationMock.Object, 
+                Mock.Of<ILogger<ServersQueryService>>());
         }
 
         [Test]

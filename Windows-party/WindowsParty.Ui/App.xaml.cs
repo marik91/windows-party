@@ -4,10 +4,10 @@
     using System.Windows;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+    using Microsoft.Extensions.Logging;
     using WindowsParty.Authentication.Tesonet;
     using WindowsParty.Repository.Tesonet;
     using WindowsParty.Ui.Services;
-    using WindowsParty.Ui.ViewModels;
     using WindowsParty.Ui.Views;
 
     /// <summary>
@@ -24,6 +24,8 @@
                .ConfigureLogging(
                     logging =>
                     {
+                        logging.AddConsole();
+
                         // Add other loggers...
                     })
                .Build();

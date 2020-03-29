@@ -1,9 +1,9 @@
 ﻿namespace WindowsParty.Ui
 {
+    using Microsoft.Extensions.DependencyInjection;
     using WindowsParty.Ui.Services;
     using WindowsParty.Ui.ViewModels;
     using WindowsParty.Ui.Views;
-    using Microsoft.Extensions.DependencyInjection;
 
     public static class UiModule
     {

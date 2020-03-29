@@ -7,6 +7,7 @@ namespace WindowsParty.Authentication.Tesonet.UnitTests.Services
     using System.Threading.Tasks;
     using FluentAssertions;
     using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.Logging;
     using Moq;
     using Moq.Protected;
     using Newtonsoft.Json;
@@ -34,8 +35,11 @@ namespace WindowsParty.Authentication.Tesonet.UnitTests.Services
             configurationSectionMock.Setup(s => s.Value).Returns("http://localhost/token");
             configurationMock.Setup(s => s.GetSection("AuthenticationEndpoint"))
                .Returns(configurationSectionMock.Object);
-
-            _sut = new AuthenticationService(_httpFactoryMock.Object, configurationMock.Object);
+            
+            _sut = new AuthenticationService(
+                _httpFactoryMock.Object,
+                configurationMock.Object,
+                Mock.Of<ILogger<AuthenticationService>>());
         }
 
         [TestCase("")]

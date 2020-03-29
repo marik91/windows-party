@@ -1,12 +1,12 @@
 ﻿namespace WindowsParty.Ui.ViewModels
 {
     using System.Threading.Tasks;
+    using GalaSoft.MvvmLight;
+    using GalaSoft.MvvmLight.Command;
     using WindowsParty.Domain.Contracts;
     using WindowsParty.Domain.Models;
     using WindowsParty.Ui.Services;
     using WindowsParty.Ui.Views;
-    using GalaSoft.MvvmLight;
-    using GalaSoft.MvvmLight.Command;
 
     public class LogInViewModel : ViewModelBase, IViewModel
     {

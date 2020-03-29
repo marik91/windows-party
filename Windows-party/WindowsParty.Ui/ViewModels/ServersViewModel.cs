@@ -3,13 +3,11 @@
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Threading.Tasks;
-    using WindowsParty.Domain.Contracts;
-    using WindowsParty.Domain.Entities;
-    using WindowsParty.Domain.Models;
-    using WindowsParty.Ui.Services;
-    using WindowsParty.Ui.Views;
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
+    using WindowsParty.Domain.Entities;
+    using WindowsParty.Ui.Services;
+    using WindowsParty.Ui.Views;
 
     public class ServersViewModel : ViewModelBase, IViewModel
     {

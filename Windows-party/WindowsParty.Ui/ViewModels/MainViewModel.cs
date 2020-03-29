@@ -1,10 +1,10 @@
 ﻿namespace WindowsParty.Ui.ViewModels
 {
     using System.Threading.Tasks;
-    using WindowsParty.Ui.Services;
-    using WindowsParty.Ui.Views;
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Command;
+    using WindowsParty.Ui.Services;
+    using WindowsParty.Ui.Views;
 
     public class MainViewModel : ViewModelBase, IViewModel
     {
