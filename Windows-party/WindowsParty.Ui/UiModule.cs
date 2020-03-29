@@ -11,13 +11,15 @@
         {
             // Register all ViewModels.
             services.AddSingleton<LogInViewModel>();
+            services.AddSingleton<MainViewModel>();
             services.AddTransient<ServersViewModel>();
 
             // Register all the Windows of the applications.
+            services.AddTransient<MainView>();
             services.AddTransient<LogInView>();
             services.AddTransient<ServersView>();
 
-            services.AddTransient<IWindowNavigationService, WindowNavigationService>();
+            services.AddSingleton<IPageNavigationService, PageNavigationService>();
         }
     }
 }

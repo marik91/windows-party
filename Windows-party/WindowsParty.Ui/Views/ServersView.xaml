@@ -1,13 +1,18 @@
-﻿<Window x:Class="WindowsParty.Ui.Views.ServersView"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WindowsParty.Ui.Views"
-        mc:Ignorable="d"
-        Title="Servers" Height="450" Width="800"
-        DataContext="{Binding Source={StaticResource Locator}, Path=ServersViewModel}">
+﻿<Page x:Class="WindowsParty.Ui.Views.ServersView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:local="clr-namespace:WindowsParty.Ui.Views"
+      mc:Ignorable="d"
+      Title="Servers" 
+      Width="1460"
+      Height="780"
+      DataContext="{Binding Source={StaticResource Locator}, Path=ServersViewModel}">
+    <Page.Background>
+        <ImageBrush ImageSource="/WindowsParty.Ui;component/Assets/bg_servers.png" Stretch="None"/>
+    </Page.Background>
     <Grid>
         
     </Grid>
-</Window>
+</Page>

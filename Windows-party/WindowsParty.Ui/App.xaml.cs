@@ -47,8 +47,11 @@
         {
             await _host.StartAsync();
 
-            var navigationService = ServiceProvider.GetRequiredService<IWindowNavigationService>();
-            await navigationService.ShowAsync<LogInView>();
+            var mainView = ServiceProvider.GetRequiredService<MainView>();
+            mainView.Show();
+
+            var pageNavigationService = ServiceProvider.GetRequiredService<IPageNavigationService>();
+            pageNavigationService.NavigateTo<LogInView>();
 
             base.OnStartup(e);
         }

@@ -1,11 +1,11 @@
 ﻿namespace WindowsParty.Ui.Views
 {
-    using System.Windows;
+    using System.Windows.Controls;
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class LogInView : Window
+    public partial class LogInView : Page
     {
         public LogInView()
         {

@@ -11,16 +11,16 @@
     public class LogInViewModel : ViewModelBase, IViewModel
     {
         private readonly IAuthenticationService _authenticationService;
-        private readonly IWindowNavigationService _windowNavigationService;
+        private readonly IPageNavigationService _pageNavigationService;
         private string _password;
         private string _userName;
 
         public LogInViewModel(
             IAuthenticationService authenticationService,
-            IWindowNavigationService windowNavigationService)
+            IPageNavigationService pageNavigationService)
         {
             _authenticationService = authenticationService;
-            _windowNavigationService = windowNavigationService;
+            _pageNavigationService = pageNavigationService;
             LogInCommand = new RelayCommand(async () => await LogIn(), CanExecuteLogin);
         }
 
@@ -68,7 +68,7 @@
 
             if (result.IsSuccess)
             {
-                await _windowNavigationService.ShowAsync<ServersView>(result);
+                _pageNavigationService.NavigateTo<ServersView>(result);
             }
         }
     }
